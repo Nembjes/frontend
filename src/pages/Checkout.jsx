@@ -18,7 +18,7 @@ const Checkout = () => {
     // Функция для получения информации о пользователе
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -53,7 +53,7 @@ const Checkout = () => {
   
       // Создание кастомера
       console.log('Создание кастомера');
-      const customerResponse = await fetch('http://localhost:5000/customers', {
+      const customerResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/customers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const Checkout = () => {
 
       // Создание заказа
       console.log(`Создание заказа`);
-      const orderResponse = await fetch('http://localhost:5000/orders', {
+      const orderResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ const Checkout = () => {
       // Создание ордердетаилс
       for (const item of cartItems) {
         console.log(`Создание orderdetails ${item.quantity}`);
-        const orderDetailsResponse = await fetch('http://localhost:5000/orderdetails', {
+        const orderDetailsResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/orderdetails', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const Checkout = () => {
       }
   
       // Создание пейментс
-      const paymentResponse = await fetch('http://localhost:5000/payments', {
+      const paymentResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/payments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ const Checkout = () => {
     // Функция для получения списка городов с сервера
     const fetchCities = async () => {
       try {
-        const response = await fetch('http://localhost:5000/city');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/city');
         const data = await response.json();
         setCities(data);
       } catch (error) {

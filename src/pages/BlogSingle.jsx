@@ -10,7 +10,7 @@ const BlogSingle = ({ match }) => {
     useEffect(() => {
         const fetchBlogData = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/blog/${id}`);
+                const response = await fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/blog/${id}`);
                 const data = await response.json();
                 setBlogData(data);
             } catch (error) {

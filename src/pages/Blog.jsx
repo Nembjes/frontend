@@ -10,7 +10,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogPosts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/blog');
+                const response = await axios.get('https://nodejska-1ae608a4fbbf.herokuapp.com/blog');
                 setBlogPosts(response.data);
             } catch (error) {
                 console.error('Error fetching blog posts:', error);

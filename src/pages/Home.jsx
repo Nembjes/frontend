@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const fetchBlogPosts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/blog');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/blog');
         const data = await response.json();
         setBlogPosts(data);
       } catch (error) {
@@ -32,7 +32,7 @@ const Home = () => {
     const fetchMostPurchasedProducts = async () => {
       // Ваш запрос к базе данных для "Most Purchased"
       try {
-        const response = await fetch('http://localhost:5000/products/mostPurchased');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products/mostPurchased');
         const data = await response.json();
         setMostPurchasedProducts(data);
       } catch (error) {
@@ -43,7 +43,7 @@ const Home = () => {
     const fetchTopRatedProducts = async () => {
       // Ваш запрос к базе данных для "Top Rated"
       try {
-        const response = await fetch('http://localhost:5000/products/topRated');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products/topRated');
         const data = await response.json();
         setTopRatedProducts(data);
       } catch (error) {
@@ -58,7 +58,7 @@ const Home = () => {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/products/featured');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products/featured');
         const data = await response.json();
         setFeaturedProducts(data);
       } catch (error) {
