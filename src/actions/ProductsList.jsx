@@ -8,7 +8,7 @@ const ProductsList = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -26,7 +26,7 @@ const ProductsList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/products');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products');
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -39,7 +39,7 @@ const ProductsList = () => {
 
   const handleDeleteProduct = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:5000/products/${productId}`, {
+      const response = await fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/products/${productId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -6,10 +6,10 @@ const AddBrand = () => {
 
   useEffect(() => {
     // Get user data, including role, from your server.
-    // Replace 'http://localhost:5000/users/me' with your actual endpoint.
+    // Replace 'https://nodejska-1ae608a4fbbf.herokuapp.com/users/me' with your actual endpoint.
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -31,7 +31,7 @@ const AddBrand = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Use your API to send data to the server
-    fetch('http://localhost:5000/brand', {
+    fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/brand', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

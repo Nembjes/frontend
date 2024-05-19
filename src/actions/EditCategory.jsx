@@ -10,7 +10,7 @@ const EditCategory = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -26,7 +26,7 @@ const EditCategory = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/category/${id}`)
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/category/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setCategory(data);
@@ -41,7 +41,7 @@ const EditCategory = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/category/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/category/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

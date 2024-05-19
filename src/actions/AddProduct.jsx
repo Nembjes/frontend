@@ -15,7 +15,7 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -33,11 +33,11 @@ const AddProduct = () => {
   useEffect(() => {
     const fetchCategoriesAndBrands = async () => {
       try {
-        const categoriesResponse = await fetch('http://localhost:5000/category');
+        const categoriesResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/category');
         const categoriesData = await categoriesResponse.json();
         setCategories(categoriesData);
 
-        const brandsResponse = await fetch('http://localhost:5000/brand');
+        const brandsResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/brand');
         const brandsData = await brandsResponse.json();
         setBrands(brandsData);
       } catch (error) {
@@ -96,7 +96,7 @@ const AddProduct = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/products', {
+      const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

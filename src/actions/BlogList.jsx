@@ -8,7 +8,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -24,14 +24,14 @@ const BlogList = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/blog')
+    fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/blog')
       .then((response) => response.json())
       .then((data) => setBlogPosts(data))
       .catch((error) => console.error('Error fetching blog posts:', error));
   }, []);
 
   const handleDeleteBlogPost = (id) => {
-    fetch(`http://localhost:5000/blog/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/blog/${id}`, {
       method: 'DELETE',
     })
       .then(() => {

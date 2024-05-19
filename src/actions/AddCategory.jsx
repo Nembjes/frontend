@@ -7,7 +7,7 @@ const AddCategory = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -28,7 +28,7 @@ const AddCategory = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/category', {
+    fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/category', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

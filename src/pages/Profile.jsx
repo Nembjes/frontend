@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/users/me', {
+        const response = await axios.get('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -29,7 +29,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchPurchaseHistory = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/orders/purchasehistory/${userData.email}`, {
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/orders/purchasehistory/${userData.email}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -49,7 +49,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchOrderStatus = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/orders', {
+        const response = await axios.get('https://nodejska-1ae608a4fbbf.herokuapp.com/orders', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../components/CartContext';
+import { SiAsda } from 'react-icons/si';
 
 const Checkout = () => {
   const { cartItems, clearCart } = useCart();
@@ -95,7 +96,6 @@ const Checkout = () => {
       if (!orderResponse.ok) {
         throw new Error(`Ошибка при создании заказа: ${orderResponse.statusText}`);
       }
-  
   
       // Создание ордердетаилс
       for (const item of cartItems) {

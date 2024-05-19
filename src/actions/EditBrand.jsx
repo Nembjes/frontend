@@ -10,7 +10,7 @@ const EditBrand = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -26,7 +26,7 @@ const EditBrand = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/brand/${id}`)
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/brand/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setBrand(data);
@@ -41,7 +41,7 @@ const EditBrand = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/brand/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/brand/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
+import { AiOutlineSmallDash } from 'react-icons/ai';
 
 const BlogSingle = ({ match }) => {
     const { id } = useParams();

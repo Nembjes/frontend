@@ -23,7 +23,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/products/${id}`);
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/products/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -32,7 +32,7 @@ const SingleProduct = () => {
 
     const fetchUserRating = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/rate/${id}`);
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/rate/${id}`);
         // Проверяем, есть ли оценка от пользователя в ответе
         const userRate = response.data && response.data.user_id === userId ? response.data : null;
         if (userRate) {
@@ -46,7 +46,7 @@ const SingleProduct = () => {
 
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/products/${id}/images`);
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/products/${id}/images`);
         setImages(response.data);
         if (response.data.length > 0) {
           setMainImage(response.data[0].link);
@@ -60,7 +60,7 @@ const SingleProduct = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/comments/${id}`);
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/comments/${id}`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -69,7 +69,7 @@ const SingleProduct = () => {
 
     const fetchAverageRating = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/rate/${id}`);
+        const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/rate/${id}`);
         
         // Проверяем, является ли response.data массивом
         if (Array.isArray(response.data)) {
@@ -89,7 +89,7 @@ const SingleProduct = () => {
 
     const fetchUserId = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -129,7 +129,7 @@ const SingleProduct = () => {
   const submitComment = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:5000/comments', {
+      await axios.post('https://nodejska-1ae608a4fbbf.herokuapp.com/comments', {
         user_id: userId,
         prod_code: id,
         com_text: event.target.comment.value,
@@ -138,7 +138,7 @@ const SingleProduct = () => {
       // Очистить поле комментария после успешной отправки
       event.target.comment.value = '';
       // Обновить комментарии
-      const response = await axios.get(`http://localhost:5000/comments/${id}`);
+      const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/comments/${id}`);
       setComments(response.data);
     } catch (error) {
       console.error('Error submitting comment:', error);
@@ -148,7 +148,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchRelatedProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/products');
+        const response = await axios.get('https://nodejska-1ae608a4fbbf.herokuapp.com/products');
         // Get four random products excluding the current one
         const filteredProducts = response.data.filter((p) => p.id !== parseInt(id, 10));
         const randomProducts = [];
@@ -176,23 +176,23 @@ const SingleProduct = () => {
 
   const submitRating = async (ratingValue) => {
     try {
-      const existingRating = userRating ? await axios.get(`http://localhost:5000/rate/${id}`) : null;
+      const existingRating = userRating ? await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/rate/${id}`) : null;
       if (existingRating) {
-        await axios.put(`http://localhost:5000/rate/${id}`, {
+        await axios.put(`https://nodejska-1ae608a4fbbf.herokuapp.com/rate/${id}`, {
           rate_id: existingRating.rate_id,
           user_id: userId,
           prod_code: id,
           value: ratingValue,
         });
       } else {
-        await axios.post('http://localhost:5000/rate', {
+        await axios.post('https://nodejska-1ae608a4fbbf.herokuapp.com/rate', {
           rate_id: ratingValue,
           user_id: userId,
           prod_code: id,
         });
       }
       // Обновить средний рейтинг после успешной отправки оценки
-      const response = await axios.get(`http://localhost:5000/rate/${id}`);
+      const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/rate/${id}`);
       if (response.data && typeof response.data === 'object' && 'value' in response.data) {
         const newRating = parseInt(response.data.value, 10);
         setAverageRating(newRating);

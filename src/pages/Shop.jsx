@@ -17,8 +17,8 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchSidebarData = async () => {
       try {
-        const categoriesResponse = await fetch('http://localhost:5000/category');
-        const brandsResponse = await fetch('http://localhost:5000/brand');
+        const categoriesResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/category');
+        const brandsResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/brand');
 
         if (!categoriesResponse.ok || !brandsResponse.ok) {
           throw new Error('Failed to fetch sidebar data');
@@ -40,7 +40,7 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/products/');
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/products/');
         const data = await response.json();
         setProducts(data);
       } catch (error) {

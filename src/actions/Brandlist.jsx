@@ -8,7 +8,7 @@ const BrandList = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -24,14 +24,14 @@ const BrandList = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/brand')
+    fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/brand')
       .then((response) => response.json())
       .then((data) => setBrands(data))
       .catch((error) => console.error('Error fetching brands:', error));
   }, []);
 
   const handleDeleteBrand = (id) => {
-    fetch(`http://localhost:5000/brand/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/brand/${id}`, {
       method: 'DELETE',
     })
       .then(() => {

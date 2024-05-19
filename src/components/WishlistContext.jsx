@@ -18,7 +18,7 @@ export const WishlistProvider = ({ children }) => {
 
   const addToWishlist = async (itemId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/products/${itemId}`);
+      const response = await axios.get(`https://nodejska-1ae608a4fbbf.herokuapp.com/products/${itemId}`);
       const newItem = response.data;
       setWishlistItems((prevItems) => {
         const existingItem = prevItems.find((item) => item.id === newItem.id);

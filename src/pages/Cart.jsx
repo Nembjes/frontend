@@ -1,6 +1,7 @@
 // Cart.jsx
 import React from 'react';
 import { useCart } from '../components/CartContext';
+import { AiOutlineSmallDash } from 'react-icons/ai';
 
 const Cart = () => {
     const { cartItems, removeFromCart, cartQuantity, updateCartItemQuantity } = useCart();

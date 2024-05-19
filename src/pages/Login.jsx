@@ -20,7 +20,7 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/users/login', loginDetails);
+      const response = await axios.post('https://nodejska-1ae608a4fbbf.herokuapp.com/users/login', loginDetails);
       console.log(response.data);
       window.localStorage.setItem('token', response.data.token);
       navigate('/profile');
@@ -52,7 +52,7 @@ const Login = () => {
 
       const username = `${firstname} ${lastname}`;
 
-      const response = await axios.post('http://localhost:5000/users/register', {
+      const response = await axios.post('https://nodejska-1ae608a4fbbf.herokuapp.com/users/register', {
         email,
         username,
         password,

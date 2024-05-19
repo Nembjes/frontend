@@ -12,7 +12,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -28,7 +28,7 @@ const EditBlog = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/blog/${id}`)
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/blog/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setBlogPost(data);
@@ -53,7 +53,7 @@ const EditBlog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/blog/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/blog/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

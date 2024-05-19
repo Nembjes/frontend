@@ -8,7 +8,7 @@ const CategoryList = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/users/me', {
+        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -24,14 +24,14 @@ const CategoryList = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/category')
+    fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/category')
       .then((response) => response.json())
       .then((data) => setCategories(data))
       .catch((error) => console.error('Error fetching categories:', error));
   }, []);
 
   const handleDeleteCategory = (id) => {
-    fetch(`http://localhost:5000/category/${id}`, {
+    fetch(`https://nodejska-1ae608a4fbbf.herokuapp.com/category/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
