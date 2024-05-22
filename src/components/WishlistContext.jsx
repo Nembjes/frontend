@@ -51,7 +51,7 @@ export const WishlistProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log('WishlistContext useEffect triggered');
+    
   }, []);
 
   return (

@@ -51,7 +51,6 @@ const Checkout = () => {
 
   const handlePlaceOrder = async () => {
     try {
-      console.log(`Начало оформления заказа `);
       // Генерация случайных чисел для checknum и ordersnum
       const checkNum = Math.floor(Math.random() * 1000000).toString();
       const orderNum = Math.floor(Math.random() * 1000000).toString();

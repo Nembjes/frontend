@@ -79,7 +79,7 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log('CartContext useEffect triggered');
+
   }, []);
 
   const clearCart = useCallback(() => {
