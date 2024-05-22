@@ -165,7 +165,7 @@ const ShopPage = () => {
                         <div className="thumb">
                           <a href={`single-product/${product.id}`} className="image">
                             <img src={`${product.mainImage}`} alt="Product" style={{ width:'100%', height:'200px'}}  />
-                            <img className="hover-image" src={`${product.mainImage}`} style={{ width:'100%', height:'200px'}} alt="Product" />
+                            <img className="hover-image" src={`${product.mainImage}`} style={{ width:'90%', height:'200px'}} alt="Product" />
                           </a>
                         </div>
                         <div className="content">
@@ -286,7 +286,7 @@ const ShopPage = () => {
               value={priceRange.max}
               onChange={handlePriceChange}
               placeholder="Max"
-              style={{ width: '30%', marginLeft: '5%' }}
+              style={{ width: '50%', marginLeft: '5%' }}
             />
           </div>
         </div>

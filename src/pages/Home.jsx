@@ -189,7 +189,7 @@ const Home = () => {
                         <div className="thumb">
                           <a href={`single-product/${product.id}`} className="image">
                             <img src={product.mainImage} alt={product.name} style={{ width: '100%' , height: '220px'}} />
-                            <img className="hover-image" src={product.mainImage} alt={product.name} />
+                            <img className="hover-image" src={product.mainImage} alt={product.name} style={{ width: '90%' , height: '220px'}} />
                           </a>
                         </div>
                         <div className="content">
