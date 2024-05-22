@@ -19,24 +19,27 @@ const Checkout = () => {
     // Функция для получения информации о пользователе
     const fetchUserData = async () => {
       try {
-        const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch user data');
-        }
-        const userData = await response.json();
-        const { email } = userData;
-        setBillingDetails((prevDetails) => ({
-          ...prevDetails,
-          email
-        }));
+          if (isAuthenticated) {
+              const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
+                  headers: {
+                      Authorization: `Bearer ${localStorage.getItem('token')}`,
+                  },
+              });
+              if (!response.ok) {
+                  throw new Error('Failed to fetch user data');
+              }
+              const userData = await response.json();
+              const { email } = userData;
+              setBillingDetails((prevDetails) => ({
+                  ...prevDetails,
+                  email
+              }));
+          }
       } catch (error) {
-        console.error('Error fetching user data:', error);
+          console.error('Error fetching user data:', error);
       }
-    };
+  };
+  
 
     fetchUserData();
   }, []);
@@ -53,7 +56,6 @@ const Checkout = () => {
       const orderNum = Math.floor(Math.random() * 1000000).toString();
   
       // Создание кастомера
-      console.log('Создание кастомера');
       const customerResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/customers', {
         method: 'POST',
         headers: {
@@ -79,7 +81,6 @@ const Checkout = () => {
 
 
       // Создание заказа
-      console.log(`Создание заказа`);
       const orderResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/orders', {
         method: 'POST',
         headers: {
@@ -99,7 +100,6 @@ const Checkout = () => {
   
       // Создание ордердетаилс
       for (const item of cartItems) {
-        console.log(`Создание orderdetails ${item.quantity}`);
         const orderDetailsResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/orderdetails', {
           method: 'POST',
           headers: {
@@ -117,8 +117,6 @@ const Checkout = () => {
         }
       }
   
-      console.log(`Создание платежа`);
-      console.log(new Date(), cartItems.reduce((total, item) => total + item.cost * item.quantity, 0));
       const paymentResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/payments', {
         method: 'POST',
         headers: {
@@ -127,7 +125,7 @@ const Checkout = () => {
         body: JSON.stringify({
           customer_id: customerId,
           checkNum: checkNum,
-          payment: new Date(),
+          date: new Date(),
           amount: cartItems.reduce((total, item) => total + item.cost * item.quantity, 0),
         }),
       });

@@ -42,18 +42,27 @@ const Header = () => {
    useEffect(() => {
       const fetchUserData = async () => {
          try {
-            const response = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/users/me', {
-               headers: {
-                  Authorization: `Bearer ${localStorage.getItem('token')}`,
-               },
-            });
-            const userData = await response.json();
-
-            setUserRole(userData.role);
+            if (isAuthenticated) {
+               const response = await fetch(
+                  'https://nodejska-1ae608a4fbbf.herokuapp.com/users/me',
+                  {
+                     headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                           'token'
+                        )}`,
+                     },
+                  }
+               );
+               const userData = await response.json();
+               setUserRole(userData.role);
+            } else {
+               setUserRole(null); // Если пользователь не аутентифицирован, устанавливаем userRole в null
+            }
          } catch (error) {
             console.error('Error fetching user data:', error);
          }
       };
+     
 
       fetchUserData();
    }, []);
