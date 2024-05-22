@@ -275,7 +275,7 @@ const Header = () => {
                <div className="container">
                   <div className="row justify-content-between align-items-center">
                      <div className="col-lg-3 col">
-                        <div className="header-logo">
+                        <div className="header-logo d-none d-lg-block">
                            <a href="/">
                               <img
                                  src="/images/logo/logo.png"
@@ -285,7 +285,7 @@ const Header = () => {
                         </div>
                      </div>
                      <div className="col-lg-3 col">
-                     <div className="header-actions">
+                        <div className="header-actions">
                            <a
                               href="#offcanvas-wishlist"
                               className="header-action-btn offcanvas-toggle"
@@ -307,56 +307,76 @@ const Header = () => {
                               </span>
                            </a>
                            <Button
-            variant="outline-primary" // Добавляем границу и цвет текста
-            className="d-lg-none"
-            onClick={toggleMobileMenu}
-         >
-            <i className={`pe-7s-menu ${isMobileMenuOpen ? 'open' : ''}`}></i>
-         </Button>
+                              variant="outline-primary" // Добавляем границу и цвет текста
+                              className="d-lg-none"
+                              onClick={toggleMobileMenu}
+                           >
+                              <i
+                                 className={`pe-7s-menu ${
+                                    isMobileMenuOpen ? 'open' : ''
+                                 }`}
+                              ></i>
+                           </Button>
 
-         {/* Мобильное меню */}
-         {isMobileMenuOpen && (
-            <div className="mobile-menu d-lg-none">
-               <ul>
-                  <li>
-                     <Button variant="link" href="/">Home</Button>
-                  </li>
-                  <li>
-                     <Button variant="link" href="/about">About</Button>
-                  </li>
-                  <li>
-                     <Button variant="link" href="/shop-left-sidebar">Shop</Button>
-                  </li>
-                  <li>
-                     <Button variant="link" href="/blog-list">Blog</Button>
-                  </li>
-                  <li>
-                     <Button variant="link" href="/contact">Contact</Button>
-                  </li>
-                  {/* Добавляем элемент для аккаунта */}
-                  <li>
-                     <Dropdown>
-                        <Dropdown.Toggle variant="link" id="dropdown-basic">
-                           Account
-                        </Dropdown.Toggle>
+                           {/* Мобильное меню */}
+                           {isMobileMenuOpen && (
+                              <div className="mobile-menu d-lg-none">
+                                 <ul>
+                                    <li>
+                                       <Button variant="link" href="/">
+                                          Home
+                                       </Button>
+                                    </li>
+                                    <li>
+                                       <Button variant="link" href="/about">
+                                          About
+                                       </Button>
+                                    </li>
+                                    <li>
+                                       <Button
+                                          variant="link"
+                                          href="/shop-left-sidebar"
+                                       >
+                                          Shop
+                                       </Button>
+                                    </li>
+                                    <li>
+                                       <Button variant="link" href="/blog-list">
+                                          Blog
+                                       </Button>
+                                    </li>
+                                    <li>
+                                       <Button variant="link" href="/contact">
+                                          Contact
+                                       </Button>
+                                    </li>
+                                    {/* Добавляем элемент для аккаунта */}
+                                    <li>
+                                       <Dropdown>
+                                          <Dropdown.Toggle
+                                             variant="link"
+                                             id="dropdown-basic"
+                                          >
+                                             Account
+                                          </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                           {/* В зависимости от статуса аутентификации пользователя показываем разные ссылки */}
-                           {isAuthenticated ? (
-                              <Dropdown.Item href="/profile">
-                                 Profile
-                              </Dropdown.Item>
-                           ) : (
-                              <Dropdown.Item href="/login">
-                                 Login
-                              </Dropdown.Item>
+                                          <Dropdown.Menu>
+                                             {/* В зависимости от статуса аутентификации пользователя показываем разные ссылки */}
+                                             {isAuthenticated ? (
+                                                <Dropdown.Item href="/profile">
+                                                   Profile
+                                                </Dropdown.Item>
+                                             ) : (
+                                                <Dropdown.Item href="/login">
+                                                   Login
+                                                </Dropdown.Item>
+                                             )}
+                                          </Dropdown.Menu>
+                                       </Dropdown>
+                                    </li>
+                                 </ul>
+                              </div>
                            )}
-                        </Dropdown.Menu>
-                     </Dropdown>
-                  </li>
-               </ul>
-            </div>
-         )}
                         </div>
                      </div>
                   </div>
