@@ -117,7 +117,7 @@ const Checkout = () => {
         }
       }
   
-      // Создание пейментс
+      console.log(`Создание платежа`);
       const paymentResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/payments', {
         method: 'POST',
         headers: {
