@@ -118,6 +118,7 @@ const Checkout = () => {
       }
   
       console.log(`Создание платежа`);
+      console.log(new Date(), cartItems.reduce((total, item) => total + item.cost * item.quantity, 0));
       const paymentResponse = await fetch('https://nodejska-1ae608a4fbbf.herokuapp.com/payments', {
         method: 'POST',
         headers: {
