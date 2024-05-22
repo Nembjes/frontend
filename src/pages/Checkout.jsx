@@ -7,6 +7,7 @@ const Checkout = () => {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState('');
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
+  const isAuthenticated = !!window.localStorage.getItem('token');
   const [billingDetails, setBillingDetails] = useState({
     firstName: '',
     lastName: '',
