@@ -116,7 +116,7 @@ const Home = () => {
     <div className="row">
       <div className="col-md-6">
         <div className="single-banner nth-child-1">
-          <img src="https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" style={{ height: '540px', width: '570px'}} />
+          <img src="https://img.freepik.com/free-photo/smartphone-balancing-with-pink-background_23-2150271746.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" style={{ height: '540px', width: '100%'}} />
           <div className="banner-content nth-child-1">
             <h3 className="title">Smartphone</h3>
             <span className="category">From $30.00</span>
@@ -129,7 +129,7 @@ const Home = () => {
       </div>
       <div className="col-md-6">
         <div className="single-banner nth-child-2 mb-30px mb-lm-30px mt-lm-30px">
-          <img style={{ height: '255px', width: '570px'}} src="https://img.freepik.com/free-photo/television-and-houseplants-in-room-scene-generative-ai_188544-12145.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" />
+          <img style={{ height: '255px', width: '100%'}} src="https://img.freepik.com/free-photo/television-and-houseplants-in-room-scene-generative-ai_188544-12145.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" />
           <div className="banner-content nth-child-2">
             <h3 className="title">TV</h3>
             <span className="category">From $30.00</span>
@@ -140,7 +140,7 @@ const Home = () => {
           </div>
         </div>
         <div className="single-banner nth-child-2">
-          <img style={{ height: '255px', width: '570px'}} src="https://img.freepik.com/free-photo/retro-computer-and-technology-with-monitor-and-hardware_23-2149506835.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" />
+          <img style={{ height: '255px', width: '100%'}} src="https://img.freepik.com/free-photo/retro-computer-and-technology-with-monitor-and-hardware_23-2149506835.jpg?size=626&ext=jpg&ga=GA1.1.444422499.1704699928&semt=sph" alt="" />
           <div className="banner-content nth-child-3">
             <h3 className="title">Computers</h3>
             <span className="category">From $30.00</span>
@@ -188,7 +188,7 @@ const Home = () => {
                       <div className="product" style={{ width: '100%' , height: '370px'}}>
                         <div className="thumb">
                           <a href={`single-product/${product.id}`} className="image">
-                            <img src={product.mainImage} alt={product.name} style={{ width: '270px' , height: '220px'}} />
+                            <img src={product.mainImage} alt={product.name} style={{ width: '100%' , height: '220px'}} />
                             <img className="hover-image" src={product.mainImage} alt={product.name} />
                           </a>
                         </div>
@@ -221,7 +221,7 @@ const Home = () => {
                       <div className="product" style={{ width: '100%' , height: '370px'}}>
                         <div className="thumb">
                           <a href={`single-product/${product.id}`} className="image">
-                            <img src={product.mainImage} alt={product.name} style={{ width: '270px' , height: '220px'}} />
+                            <img src={product.mainImage} alt={product.name} style={{ width: '100%' , height: '220px'}} />
                             <img className="hover-image" src={product.mainImage} alt={product.name} />
                           </a>
                         </div>
@@ -395,7 +395,7 @@ const Home = () => {
             <div className="single-blog">
               <div className="blog-image">
                 <a href={`blog-single/${post.id}`}>
-                  <img src={post.imageLink} className="img-responsive w-100" style={{ width:'300px', height:'350px'}} alt="" />
+                  <img src={post.imageLink} className="img-responsive w-100" style={{ width:'100%', height:'350px'}} alt="" />
                 </a>
               </div>
               <div className="blog-text">

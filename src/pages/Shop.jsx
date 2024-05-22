@@ -164,8 +164,8 @@ const ShopPage = () => {
                         <span className="badges"></span>
                         <div className="thumb">
                           <a href={`single-product/${product.id}`} className="image">
-                            <img src={`${product.mainImage}`} alt="Product" style={{ width:'250px', height:'200px'}}  />
-                            <img className="hover-image" src={`${product.mainImage}`} style={{ width:'250px', height:'200px'}} alt="Product" />
+                            <img src={`${product.mainImage}`} alt="Product" style={{ width:'100%', height:'200px'}}  />
+                            <img className="hover-image" src={`${product.mainImage}`} style={{ width:'100%', height:'200px'}} alt="Product" />
                           </a>
                         </div>
                         <div className="content">
