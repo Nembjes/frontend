@@ -96,13 +96,13 @@ const ShopPage = () => {
 
 
   return (
-    <>
+    <div>
       {/* Breadcrumb Area Start */}
       <div className="breadcrumb-area" style={{ backgroundImage: `url(https://template.hasthemes.com/hmart/hmart/assets/images/about/breadcrunb-bg.webp)` }}>
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-12 text-center">
-              <h2 className="breadcrumb-title">Product Page</h2>
+              <h2 className="breadcrumb-title">Single Product Page</h2>
               {/* Breadcrumb List Start */}
               <ul className="breadcrumb-list">
                 <li className="breadcrumb-item"><a href="/">Home</a></li>
@@ -115,189 +115,232 @@ const ShopPage = () => {
       </div>
       {/* Breadcrumb Area End */}
       
-      {/* <!-- Shop Page Start  --> */}
-        <div className="shop-category-area pt-100px pb-100px">
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-9 order-lg-last col-md-12 order-md-first">
-                        {/* <!-- Shop Top Area Start --> */}
-                        <div className="shop-top-bar d-flex">
-                            <p className="compare-product"> <span>{currentProductsScore}</span> Product Found of <span>{totalProducts}</span></p>
-                            {/* <!-- Left Side End --> */}
-                            <div className="shop-tab nav">
-                                <button className="active" data-bs-target="#shop-grid" data-bs-toggle="tab">
-                                    <i className="fa fa-th" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                            {/* <!-- Right Side Start --> */}
-                            <div className="select-shoing-wrap d-flex align-items-center">
-                                <div className="shot-product">
-                                    <p>Sort By:</p>
-                                </div>
-                                {/* <!-- Single Wedge End --> */}
-                                <div className="header-bottom-set dropdown">
-                                <button className="dropdown-toggle header-action-btn" data-bs-toggle="dropdown">
-              {sortOrder === 'default' ? 'Default' : `Sort By ${sortOrder}`}
-              <i className="fa fa-angle-down"></i>
-            </button>
-            <ul className="dropdown-menu dropdown-menu-right">
-            <li><a className="dropdown-item" onClick={() => setSortOrder('default')}>Default</a></li>
-              <li><a className="dropdown-item" onClick={() => setSortOrder('nameAsc')}>Name, A to Z</a></li>
-              <li><a className="dropdown-item" onClick={() => setSortOrder('nameDesc')}>Name, Z to A</a></li>
-              <li><a className="dropdown-item" onClick={() => setSortOrder('priceAsc')}>Price, low to high</a></li>
-              <li><a className="dropdown-item" onClick={() => setSortOrder('priceDesc')}>Price, high to low</a></li>
-            </ul>
-                                </div>
-                                {/* <!-- Single Wedge Start --> */}
-                            </div>
-                            {/* <!-- Right Side End --> */}
-                        </div>
-                        {/* <!-- Shop Top Area End --> */}
-                        {/* <!-- Shop Bottom Area Start --> */}
-                        <div className="shop-bottom-area">
-                            {/* Tab Content Area Start */}
-                <div className="row mb-n-30px">
-                  {currentProducts.map((product) => (
-                    <div key={product.id} className="col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                      {/* Single Prodect */}
-                      <div className="product">
-                        <span className="badges"></span>
-                        <div className="thumb">
-                          <a href={`single-product/${product.id}`} className="image">
-                            <img src={`${product.mainImage}`} alt="Product" style={{ width:'100%', height:'200px'}}  />
-                            <img className="hover-image" src={`${product.mainImage}`} style={{ width:'90%', height:'200px'}} alt="Product" />
-                          </a>
-                        </div>
-                        <div className="content">
-                          <h5 className="title">
-                            <a href={`single-product/${product.id}`}>{product.name}</a>
-                          </h5>
-                          <span className="price">
-                            <span className="new">${Number(product.cost).toFixed(2)}</span>
-                          </span>
-                        </div>
-                        <div className="actions">
-                        <ProductButtons productId={product.id} />
-  </div>
-                      </div>
+      {/* Product Details Area */}
+      <div className="product-details-area pt-100px pb-100px">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+              {/* Swiper */}
+              <div className="swiper-container zoom-top">
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img className="img-responsive m-auto" src={mainImage} alt={`Product ${product.id}`} />
+                    <a className="venobox full-preview" data-gall="myGallery" href={mainImage}>
+                      <i className="fa fa-arrows-alt" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {/* Additional Images */}
+              <div className="swiper-container mt-20px zoom-thumbs slider-nav-style-1 small-nav">
+                <div className="swiper-wrapper">
+                  {images.map((image, index) => (
+                    <div key={index} className="swiper-slide" style={{ width: '120px', height: '250px' }}>
+                      <img
+                        className="img-responsive m-auto"
+                        src={image.link}
+                        alt={`Product ${product.id}`}
+                        style={{ width: '170px', height: '125px' }}
+                        onClick={() => handleMainImageChange(image.link)} // Добавляем обработчик клика
+                      />
                     </div>
                   ))}
                 </div>
-                {/* Tab Content Area End */}
-                             {/* Pagination Area Start */}
-      <div className="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
-        <div className="pages">
-          <ul>
-            <li className="li">
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage(currentPage - 1)}
-                disabled={currentPage === 1}
-              >
-                <i className="fa fa-angle-left"></i>
-              </button>
-            </li>
-            {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
-              <li key={index} className="li">
-                <button
-                  className={`page-link ${currentPage === index + 1 ? 'active' : ''}`}
-                  onClick={() => setCurrentPage(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              </li>
-            ))}
-            <li className="li">
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage(currentPage + 1)}
-                disabled={currentPage === Math.ceil(filteredProducts.length / productsPerPage)}
-              >
-                <i className="fa fa-angle-right"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-      {/* Pagination Area End */}
-                        </div>
-                        {/* <!-- Shop Bottom Area End --> */}
+              </div>
+            </div>
+  
+            <div className="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+              {/* Product Details Content */}
+              <div className="product-details-content quickview-content ml-25px">
+                <h2>{product.name}</h2>
+                {/* Pricing Meta */}
+                <div className="pricing-meta">
+                  <ul className="d-flex">
+                    <li className="new-price">${product.cost}</li>
+                  </ul>
+                </div>
+                <div className="pro-details-rating-wrap">
+                  <div className="rating-product">
+                    {[1, 2, 3, 4, 5].map((value) => (
+                      <FaStar
+                        key={value}
+                        className={`star ${value <= (userRating || averageRating) ? 'selected' : ''}`}
+                        onClick={() => submitRating(value)}
+                        style={{ color: value <= (userRating || averageRating) ? '#FFD700' : '#aaa' }}
+                      />
+                    ))}
+                  </div>
+                  <span className="read-review">
+                    <a className="reviews" href="">
+                      ({averageRating} / {totalReviews} Customer Reviews)
+                    </a>
+                  </span>
+                </div>
+  
+                {/* Product Description */}
+                <p className="mt-30px"><b>Description:</b><br></br>{product.description}</p>
+  
+                {/* Categories */}
+                <div className="pro-details-categories-info pro-details-same-style d-flex m-0">
+                  <span>Categories: </span>
+                  <ul className="d-flex">
+                    <li>{product.category.name}</li>
+                  </ul>
+                </div>
+  
+                {/* Tags */}
+                <div className="pro-details-categories-info pro-details-same-style d-flex m-0">
+                  <span>Brand: </span>
+                  <ul className="d-flex">
+                    <li>{product.brand.name}</li>
+                  </ul>
+                </div>
+  
+                {/* Product Quantity */}
+                <div className="pro-details-quality">
+                  <div className="cart-plus-minus">
+                    <button className="dec qtybutton" onClick={decreaseQuantity}>-</button>
+                    <input
+                      className="cart-plus-minus-box"
+                      type="text"
+                      name="qtybutton"
+                      placeholder="1"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                    />
+                    <button className="inc qtybutton" onClick={increaseQuantity}>+</button>
+                  </div>
+  
+                  {/* Add to Cart Button */}
+                  <ProductButtons productId={product.id} quantity={quantity} />
+                </div>
+              </div>
+              
+              {/* Product Details Description Area */}
+              <div className="description-review-wrapper">
+                <div className="description-review-topbar nav">
+                  <button className="active" data-bs-toggle="tab" data-bs-target="#des-details1">Description</button>
+                  <button data-bs-toggle="tab" data-bs-target="#des-details3">Comments</button>
+                </div>
+                <div className="tab-content description-review-bottom">
+                  <div id="des-details1" className="tab-pane active">
+                    {/* Product Description */}
+                    <div className="product-description-wrapper">
+                      <p>{product.description}</p>
                     </div>
-                    {/* <!-- Sidebar Area Start --> */}
-                    <div className="col-lg-3 order-lg-first col-md-12 order-md-last">
-      <div className="shop-sidebar-wrap">
-        <div className="sidebar-widget">
-          <h4 className="sidebar-title">Categories</h4>
-          <div className="sidebar-widget-category">
-            <ul>
-              <li>
-                <button className={selectedCategory === 'All' ? 'selected' : ''} onClick={() => handleCategoryChange('All')}>
-                  All
-                </button>
-              </li>
-              {categories.map((category) => (
-                <li key={category.id}>
-                  <button className={selectedCategory === category.name ? 'selected' : ''} onClick={() => handleCategoryChange(category.name)}>
-                    {category.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="sidebar-widget">
-          <h4 className="sidebar-title">Brands</h4>
-          <div className="sidebar-widget-brand">
-            <ul>
-              <li>
-                <button className={selectedBrand === 'All' ? 'selected' : ''} onClick={() => handleBrandChange('All')}>
-                  All
-                </button>
-              </li>
-              {brands.filter(brand =>
-                products.some(product =>
-                  product.brand.name === brand.name && (selectedCategory === 'All' || product.category.name === selectedCategory)
-                )
-              ).map((brand) => (
-                <li key={brand.id}>
-                  <button className={selectedBrand === brand.name ? 'selected' : ''} onClick={() => handleBrandChange(brand.name)}>
-                    {brand.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="sidebar-widget">
-          <h4 className="sidebar-title">Price Range</h4>
-          <div className="sidebar-widget-price">
-            <input
-              type="number"
-              name="min"
-              value={priceRange.min}
-              onChange={handlePriceChange}
-              placeholder="Min"
-              style={{ width: '30%', marginRight: '5%' }}
-            />
-            <span>-</span>
-            <input
-              type="number"
-              name="max"
-              value={priceRange.max}
-              onChange={handlePriceChange}
-              placeholder="Max"
-              style={{ width: '50%', marginLeft: '5%' }}
-            />
+                  </div>
+                  <div id="des-details3" className="tab-pane">
+                    {/* Product Comments */}
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="comment-wrapper">
+                          {/* Display comments or "No comments" */}
+                          {comments.length > 0 ? (
+                            comments.map((comment) => (
+                              <div key={comment.id} className="single-comment">
+                                <div className="comment-img">
+                                  <img src="https://template.hasthemes.com/hmart/hmart/assets/images/review-image/1.png" alt={`User ${comment.user_id}`} />
+                                </div>
+                                <div className="comment-content">
+                                  <div className="comment-top-wrap">
+                                    <div className="comment-left" style={{ marginBottom: '50px' }}>
+                                      <div className="comment-name">
+                                        <h4>{comment.users.username}</h4>
+                                      </div>
+                                      <div className="comment-right">
+                                        <p>{comment.com_text}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <p>No comments</p>
+                          )}
+                        </div>
+                      </div>
+                      {userId && (
+                        <div className="col-lg-12">
+                          {/* Add a Comment Form */}
+                          <div className="comment-form-wrapper pl-50">
+                            <h3>Add a Comment</h3>
+                            <div className="comment-form">
+                              <form onSubmit={submitComment}>
+                                <div className="row">
+                                  <div className="col-md-12">
+                                    <div className="comment-form-style form-submit">
+                                      <textarea name="comment" placeholder="Comment"></textarea>
+                                      <button className="btn btn-primary btn-hover-color-primary" type="submit" value="Submit">Submit Comment</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            {/* Related Products */}
+            <div className="product-area related-product" style={{ marginTop: '100px' }}>
+              <div className="container">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="section-title text-center m-0">
+                      <h2 className="title">Related Products</h2>
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col">
+                    <div className="new-product-slider swiper-container slider-nav-style-1">
+                      <div className="d-flex justify-content-center align-items-center swiper-wrapper">
+                        {relatedProducts.slice(currentIndex, currentIndex + 4).map((relatedProduct) => (
+                          <div key={relatedProduct.id} className="swiper-slide" style={{ width: '275px' }}>
+                            {/* Single Product */}
+                            <div className="product" style={{ width: '270px', height: '400px' }}>
+                              <div className="thumb">
+                                <a href={`${relatedProduct.id}`} className="image">
+                                  <img src={relatedProduct.mainImage} alt="Product" />
+                                  <img className="hover-image" src={relatedProduct.mainImage} alt="Product" />
+                                </a>
+                              </div>
+                              <div className="content">
+                                <span className="category">{relatedProduct.category.name}</span>
+                                <h5 className="title">
+                                  <a href={`${relatedProduct.id}`}>{relatedProduct.name}</a>
+                                </h5>
+                                <span className="price">
+                                  <span className="new">{relatedProduct.cost}</span>
+                                </span>
+                              </div>
+                              <div className="actions">
+                                <ProductButtons productId={relatedProduct.id} />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="d-flex justify-content-center align-items-center">
+                        <button className="prev" onClick={handlePrev}><FaChevronLeft size={32} /></button>
+                        <button className="next" onClick={handleNext}><FaChevronRight size={32} /></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-                </div>
-            </div>
-        </div>
-        {/* <!-- Shop Page End  --> */}
-    </>
   );
-};
+};  
 
 export default ShopPage;
