@@ -33,16 +33,16 @@ const Contact = () => {
                                     <form className="contact-form-style" id="contact-form" action="https://whizthemes.com/nazmul/php/mail.php" method="post">
                                         <div className="row">
                                             <div className="col-lg-6">
-                                                <input name="name" placeholder="Name*" type="text" />
+                                                <input name="con_firstName" placeholder="First Name*" type="text" required />
                                             </div>
                                             <div className="col-lg-6">
-                                                <input name="email" placeholder="Email*" type="email" />
+                                                <input name="con_lastName" placeholder="Last Name*" type="text" required />
+                                            </div>
+                                            <div className="col-lg-6">
+                                                <input name="con_email" placeholder="Email*" type="email" required />
                                             </div>
                                             <div className="col-lg-12">
-                                                <input name="subject" placeholder="Subject*" type="text" />
-                                            </div>
-                                            <div className="col-lg-12 text-center">
-                                                <textarea name="message" placeholder="Your Message*"></textarea>
+                                                <textarea name="con_message" placeholder="Your Message*" required></textarea>
                                                 <button className="btn btn-primary" type="submit">Send Message</button>
                                             </div>
                                         </div>
