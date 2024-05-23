@@ -30,23 +30,23 @@ const Contact = () => {
                                     <div className="contact-title mb-30">
                                         <h2 className="title">Send A Quest</h2>
                                     </div>
-                                    <form className="contact-form-style" id="contact-form" action="https://whizthemes.com/nazmul/php/mail.php" method="post">
-                                        <div className="row">
-                                            <div className="col-lg-6">
-                                                <input name="con_firstName" placeholder="First Name*" type="text" required />
-                                            </div>
-                                            <div className="col-lg-6">
-                                                <input name="con_lastName" placeholder="Last Name*" type="text" required />
-                                            </div>
-                                            <div className="col-lg-6">
-                                                <input name="con_email" placeholder="Email*" type="email" required />
-                                            </div>
-                                            <div className="col-lg-12">
-                                                <textarea name="con_message" placeholder="Your Message*" required></textarea>
-                                                <button className="btn btn-primary" type="submit">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <form className="contact-form-style" id="contact-form" action="https://cors-anywhere.herokuapp.com/https://whizthemes.com/nazmul/php/mail.php" method="post">
+    <div className="row">
+        <div className="col-lg-6">
+            <input name="con_firstName" placeholder="First Name*" type="text" required />
+        </div>
+        <div className="col-lg-6">
+            <input name="con_lastName" placeholder="Last Name*" type="text" required />
+        </div>
+        <div className="col-lg-6">
+            <input name="con_email" placeholder="Email*" type="email" required />
+        </div>
+        <div className="col-lg-12">
+            <textarea name="con_message" placeholder="Your Message*" required></textarea>
+            <button className="btn btn-primary" type="submit">Send Message</button>
+        </div>
+    </div>
+</form>
                                     <p className="form-messege"></p>
                                 </div>
                             </div>
